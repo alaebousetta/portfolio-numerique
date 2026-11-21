@@ -40,3 +40,13 @@ pre { background: #1e2a44; color: #f5f7fb; padding: 1rem; overflow-x: auto; bord
 
 
 footer { text-align: center; padding: 1rem; font-size: 0.9rem; }
+
+
+.checklist { list-style: none; padding: 0; }
+.checklist li { margin-bottom: 0.5rem; }
+
+
+button { background: var(--accent); color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 6px; font-size: 1rem; cursor: pointer; }
+
+
+#resultat { font-weight: bold; margin-top: 1rem; }
