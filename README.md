@@ -6,4 +6,4 @@
 Ce site présente mes réalisations dans chaque module de 1re année : Digital Skills, développement, systèmes et développement web
 
 ## Site en ligne
-https://alae-bousetta.github.io/portfolio-numerique/
+https://alaebousetta.github.io/portfolio-numerique/
