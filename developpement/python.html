@@ -24,18 +24,113 @@
 
   <main>
     <h1>Python</h1>
+    <p>Voici trois mini-projets que j'ai réalisés en Python.</p>
 
     <section>
-      <h2>Contenu à venir</h2>
-      <p>Cette page présentera mes réalisations.</p>
+      <h2>Projet 1 : moyenne, maximum et minimum avec des boucles</h2>
+      <h3>Le problème</h3>
+      <p>Calculer la moyenne, la note la plus haute et la note la plus basse d'un tuple de notes, sans utiliser les fonctions toutes prêtes de Python.</p>
+      <h3>Le code</h3>
+<pre><code>t = (12, 15, 12, 16, 20, 15)
+
+# Moyenne
+s = 0
+for i in t:
+    s = s + i
+moy = s / len(t)
+print("La moyenne est :", moy)
+
+# Valeur maximale
+vmax = t[0]
+for i in t:
+    if i &gt; vmax:
+        vmax = i
+print("La valeur maximale est :", vmax)
+
+# Valeur minimale
+vmin = t[0]
+for i in t:
+    if i &lt; vmin:
+        vmin = i
+print("La valeur minimale est :", vmin)</code></pre>
+      <h3>Comment ça marche</h3>
+      <p>La boucle parcourt chaque note et l'ajoute à la somme <code>s</code>. Ensuite, je divise la somme par le nombre de notes, <code>len(t)</code>. Pour le maximum, je pars de la première note, puis je compare chaque note : si elle est plus grande, je la garde. Le minimum fonctionne de la même façon.</p>
+      <h3>Résultat</h3>
+      <img src="../medias/python1.png" alt="Exécution du projet 1 : moyenne 15.0, maximum 20, minimum 12">
+      <h3>Difficultés rencontrées et solutions</h3>
+      <ul>
+        <li>Je divisais par 15 alors que le tuple contient 6 notes, donc la moyenne était fausse. Solution : utiliser <code>len(t)</code>.</li>
+        <li>Le calcul de la moyenne était dans la boucle. Je l'ai mis après la boucle.</li>
+        <li>J'avais appelé mes variables <code>max</code> et <code>min</code>, qui sont des fonctions de Python. Je les ai renommées <code>vmax</code> et <code>vmin</code>.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Projet 2 : statistiques avec les fonctions de Python</h2>
+      <h3>Le problème</h3>
+      <p>Pour une liste de 15 notes, calculer la moyenne, le maximum, le minimum et compter combien de fois la note 12 apparaît.</p>
+      <h3>Le code</h3>
+<pre><code>L = [12, 15, 4, 0, 8, 10, 15, 17, 18, 19, 20, 12, 4, 1, 2]
+
+somme = 0
+for i in range(len(L)):
+    somme = somme + L[i]
+moyenne = somme / len(L)
+
+maximum = max(L)
+minimum = min(L)
+nb = L.count(12)
+
+print("La moyenne est :", moyenne)
+print("Le maximum est :", maximum)
+print("Le minimum est :", minimum)
+print("Le nombre de fois où 12 apparaît :", nb)</code></pre>
+      <h3>Comment ça marche</h3>
+      <p>Je calcule la somme avec une boucle, puis la moyenne. Pour le reste, j'utilise les fonctions de Python : <code>max()</code>, <code>min()</code> et <code>count()</code>. Le code est beaucoup plus court que dans le projet 1.</p>
+      <h3>Résultat</h3>
+      <img src="../medias/python2.png" alt="Exécution du projet 2 : moyenne 10.47, maximum 20, minimum 0, la note 12 apparaît 2 fois">
+      <h3>Difficultés rencontrées et solutions</h3>
+      <ul>
+        <li>Les noms de mes variables étaient inversés : <code>moy</code> contenait la somme et <code>sum</code> la moyenne. Je les ai renommées <code>somme</code> et <code>moyenne</code>.</li>
+        <li>J'avais écrit <code>range(0,15)</code>. Avec <code>range(len(L))</code>, le programme marche même si j'ajoute des notes.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Projet 3 : rechercher un étudiant</h2>
+      <h3>Le problème</h3>
+      <p>L'utilisateur tape un nom. Le programme dit si cet étudiant existe et donne sa position dans le tuple.</p>
+      <h3>Le code</h3>
+<pre><code>nom = ("alae", "sara", "mabrouka", "yessin", "aziz", "mariem", "hiba", "jed", "hasna")
+name = input("Donner le nom de l'étudiant : ")
+
+if name in nom:
+    i = 0
+    while i &lt; len(nom):
+        if nom[i] == name:
+            break
+        else:
+            i = i + 1
+    print("Sa position dans le tuple est :", i)
+else:
+    print("Le nom n'existe pas.")</code></pre>
+      <h3>Comment ça marche</h3>
+      <p>D'abord, <code>in</code> vérifie si le nom existe dans le tuple. Ensuite, la boucle <code>while</code> avance case par case jusqu'à trouver le nom, et <code>break</code> arrête la boucle. Attention : la position commence à 0, donc « alae » est à la position 0.</p>
+      <h3>Résultat</h3>
+      <img src="../medias/python3.png" alt="Exécution du projet 3 : recherche d'un nom et affichage de sa position">
+      <h3>Difficultés rencontrées et solutions</h3>
+      <ul>
+        <li>Deux noms avaient un espace caché au début (" mariem"), donc le programme disait qu'ils n'existaient pas. J'ai supprimé les espaces.</li>
+        <li>Ma condition était <code>i &lt;= len(nom)</code>, ce qui peut chercher une case qui n'existe pas. Je l'ai remplacée par <code>i &lt; len(nom)</code>.</li>
+      </ul>
     </section>
 
     <section>
       <h2>Transparence IA</h2>
-      <p><strong>Outils utilisés :</strong> …</p>
-      <p><strong>Rôle de l'IA :</strong> …</p>
-      <p><strong>Ce que j'ai fait moi-même :</strong> …</p>
-      <p><strong>Sources vérifiées :</strong> …</p>
+      <p><strong>Outils utilisés :</strong> Programiz (pour exécuter le code), Claude.</p>
+      <p><strong>Rôle de l'IA :</strong> Claude a testé mes programmes, m'a expliqué mes erreurs et m'a aidée à mettre la page en forme.</p>
+      <p><strong>Ce que j'ai fait moi-même :</strong> j'ai écrit les trois programmes, j'ai compris et appliqué les corrections, j'ai exécuté les programmes et fait les captures d'écran.</p>
+      <p><strong>Sources vérifiées :</strong> mon cours de Python (ISET Nabeul).</p>
     </section>
   </main>
 
