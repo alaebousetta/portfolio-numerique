@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>architecture electronique – Portfolio d'Alae Bousetta</title>
+  <title>Architecture et électronique – Portfolio d'Alae Bousetta</title>
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -23,19 +23,113 @@
   </header>
 
   <main>
-    <h1>architecture electronique</h1>
+    <h1>Architecture des ordinateurs et électronique</h1>
 
     <section>
-      <h2>Contenu à venir</h2>
-      <p>Cette page présentera mes réalisations.</p>
+      <h2>L'architecture d'un ordinateur</h2>
+      <p>La plupart des ordinateurs suivent l'architecture de von Neumann : le processeur, la mémoire et les entrées/sorties communiquent entre eux par des bus.</p>
+      <div class="archi">
+        <div class="bloc cpu"><strong>Processeur (CPU)</strong><br>Unité de commande + UAL + registres</div>
+        <div class="fleche">↕</div>
+        <div class="bus">Bus : données, adresses et commandes</div>
+        <div class="fleche">↕</div>
+        <div class="ligne-blocs">
+          <div class="bloc"><strong>Mémoire centrale</strong><br>RAM et ROM</div>
+          <div class="bloc"><strong>Stockage</strong><br>Disque dur, SSD</div>
+          <div class="bloc"><strong>Entrées</strong><br>Clavier, souris, micro</div>
+          <div class="bloc"><strong>Sorties</strong><br>Écran, imprimante, haut-parleurs</div>
+        </div>
+      </div>
+      <h3>Commentaire du schéma</h3>
+      <ul>
+        <li><strong>Processeur (CPU) :</strong> c'est le « cerveau ». L'unité de commande lit les instructions et les fait exécuter. L'UAL (unité arithmétique et logique) fait les calculs et les comparaisons. Les registres sont de toutes petites mémoires très rapides à l'intérieur du processeur.</li>
+        <li><strong>Mémoire centrale :</strong> la RAM garde les programmes et les données en cours d'utilisation, et elle s'efface quand on éteint l'ordinateur. La ROM garde les programmes de démarrage, même quand l'ordinateur est éteint.</li>
+        <li><strong>Stockage :</strong> le disque dur ou le SSD garde les fichiers, même ordinateur éteint.</li>
+        <li><strong>Entrées et sorties :</strong> elles permettent à l'ordinateur d'échanger avec l'utilisateur.</li>
+        <li><strong>Bus :</strong> ce sont les « routes » des informations. Le bus de données transporte les valeurs, le bus d'adresses indique où lire ou écrire dans la mémoire, et le bus de commande dit s'il faut lire ou écrire.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Les systèmes de numération</h2>
+      <p>L'ordinateur ne comprend que le <strong>binaire</strong> (base 2 : seulement 0 et 1). L'<strong>hexadécimal</strong> (base 16 : de 0 à 9, puis A à F) sert à écrire le binaire de façon plus courte.</p>
+
+      <h3>Décimal → binaire : divisions successives par 2</h3>
+      <p>Exemple avec 13 :</p>
+      <div class="tableau">
+        <table>
+          <tr><th>Division</th><th>Quotient</th><th>Reste</th></tr>
+          <tr><td>13 ÷ 2</td><td>6</td><td>1</td></tr>
+          <tr><td>6 ÷ 2</td><td>3</td><td>0</td></tr>
+          <tr><td>3 ÷ 2</td><td>1</td><td>1</td></tr>
+          <tr><td>1 ÷ 2</td><td>0</td><td>1</td></tr>
+        </table>
+      </div>
+      <p>On lit les restes de bas en haut : 13 = <strong>1101</strong> en binaire.</p>
+
+      <h3>Binaire → décimal</h3>
+      <p>Chaque position vaut une puissance de 2 (8, 4, 2, 1). Par exemple : 1011 = 1×8 + 0×4 + 1×2 + 1×1 = <strong>11</strong>.</p>
+
+      <h3>Hexadécimal</h3>
+      <p>En hexadécimal, A = 10, B = 11… jusqu'à F = 15. Par exemple : 2A = 2×16 + 10 = <strong>42</strong>. Pour passer du binaire à l'hexadécimal, on coupe en groupes de 4 bits : 42 = 0010 1010 = 2 A.</p>
+
+      <div class="tableau">
+        <table>
+          <tr><th>Décimal</th><th>Binaire</th><th>Hexadécimal</th></tr>
+          <tr><td>11</td><td>1011</td><td>B</td></tr>
+          <tr><td>13</td><td>1101</td><td>D</td></tr>
+          <tr><td>42</td><td>101010</td><td>2A</td></tr>
+          <tr><td>255</td><td>11111111</td><td>FF</td></tr>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>Électronique numérique : les portes logiques</h2>
+      <p>Une porte logique reçoit des signaux 0 ou 1 et donne une sortie selon une règle. Les portes sont fabriquées avec des transistors, et un processeur en contient des milliards.</p>
+
+      <h3>Porte ET (AND) : la sortie vaut 1 seulement si les deux entrées valent 1</h3>
+      <div class="tableau">
+        <table>
+          <tr><th>A</th><th>B</th><th>A ET B</th></tr>
+          <tr><td>0</td><td>0</td><td>0</td></tr>
+          <tr><td>0</td><td>1</td><td>0</td></tr>
+          <tr><td>1</td><td>0</td><td>0</td></tr>
+          <tr><td>1</td><td>1</td><td>1</td></tr>
+        </table>
+      </div>
+
+      <h3>Porte OU (OR) : la sortie vaut 1 si au moins une entrée vaut 1</h3>
+      <div class="tableau">
+        <table>
+          <tr><th>A</th><th>B</th><th>A OU B</th></tr>
+          <tr><td>0</td><td>0</td><td>0</td></tr>
+          <tr><td>0</td><td>1</td><td>1</td></tr>
+          <tr><td>1</td><td>0</td><td>1</td></tr>
+          <tr><td>1</td><td>1</td><td>1</td></tr>
+        </table>
+      </div>
+
+      <h3>Porte NON (NOT) : la sortie est l'inverse de l'entrée</h3>
+      <div class="tableau">
+        <table>
+          <tr><th>A</th><th>NON A</th></tr>
+          <tr><td>0</td><td>1</td></tr>
+          <tr><td>1</td><td>0</td></tr>
+        </table>
+      </div>
+
+      <h3>Mon test dans un simulateur</h3>
+      <p>J'ai testé la porte ET dans le simulateur en ligne Academo : avec A = 1 et B = 1, la sortie vaut 1. Si une entrée passe à 0, la sortie passe à 0.</p>
+      <img src="../medias/porte-et.png" alt="Simulateur Academo : porte ET avec les deux entrées à 1 et la sortie à 1">
     </section>
 
     <section>
       <h2>Transparence IA</h2>
-      <p><strong>Outils utilisés :</strong> …</p>
-      <p><strong>Rôle de l'IA :</strong> …</p>
-      <p><strong>Ce que j'ai fait moi-même :</strong> …</p>
-      <p><strong>Sources vérifiées :</strong> …</p>
+      <p><strong>Outils utilisés :</strong> simulateur de portes logiques Academo, Claude.</p>
+      <p><strong>Rôle de l'IA :</strong> Claude m'a proposé la structure de la page, le schéma, les explications et les exemples de conversion.</p>
+      <p><strong>Ce que j'ai fait moi-même :</strong> j'ai refait les conversions à la main pour les vérifier, testé la porte ET dans le simulateur, fait la capture d'écran, et lu et compris le contenu.</p>
+      <p><strong>Sources vérifiées :</strong> mon cours d'architecture des ordinateurs (ISET Nabeul), <a href="https://academo.org/demos/logic-gate-simulator/">Academo – Logic Gate Simulator</a>.</p>
     </section>
   </main>
 
