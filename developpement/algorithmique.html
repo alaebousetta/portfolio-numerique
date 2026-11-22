@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>algorithmique – Portfolio d'Alae Bousetta</title>
+  <title>Algorithmique – Portfolio d'Alae Bousetta</title>
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -23,19 +23,147 @@
   </header>
 
   <main>
-    <h1>algorithmique</h1>
+    <h1>Algorithmique</h1>
+    <p>Trois algorithmes sur les chaînes de caractères, avec leur idée, un exemple pas à pas et leur traduction en Python.</p>
 
     <section>
-      <h2>Contenu à venir</h2>
-      <p>Cette page présentera mes réalisations.</p>
+      <h2>Algorithme 1 : compter les occurrences d'un caractère</h2>
+      <h3>L'idée générale</h3>
+      <p>On parcourt la chaîne case par case. Chaque fois qu'on trouve le caractère cherché, on ajoute 1 au compteur.</p>
+      <h3>Le pseudo-code</h3>
+<pre><code>Algorithme Occurrence
+Variables
+    ch : chaîne
+    c : caractère
+    i, nb : entier
+Début
+    Écrire("Donner une chaîne : ")
+    Lire(ch)
+    Écrire("Donner un caractère : ")
+    Lire(c)
+    nb ← 0
+    Pour i de 0 à long(ch) - 1 faire
+        Si ch[i] = c alors
+            nb ← nb + 1
+        FinSi
+    FinPour
+    Écrire("Le caractère ", c, " apparaît ", nb, " fois")
+Fin</code></pre>
+      <h3>Exemple pas à pas</h3>
+      <p>Avec ch = « elle » et c = « e » :</p>
+      <div class="tableau">
+        <table>
+          <tr><th>i</th><th>ch[i]</th><th>ch[i] = c ?</th><th>nb</th></tr>
+          <tr><td>0</td><td>e</td><td>oui</td><td>1</td></tr>
+          <tr><td>1</td><td>l</td><td>non</td><td>1</td></tr>
+          <tr><td>2</td><td>l</td><td>non</td><td>1</td></tr>
+          <tr><td>3</td><td>e</td><td>oui</td><td>2</td></tr>
+        </table>
+      </div>
+      <p>Résultat : le caractère « e » apparaît 2 fois.</p>
+      <h3>Traduction en Python</h3>
+<pre><code>ch = input("Donner une chaîne : ")
+c = input("Donner un caractère : ")
+nb = 0
+for i in range(len(ch)):
+    if ch[i] == c:
+        nb = nb + 1
+print("Le caractère", c, "apparaît", nb, "fois")</code></pre>
+    </section>
+
+    <section>
+      <h2>Algorithme 2 : inverser une chaîne</h2>
+      <h3>L'idée générale</h3>
+      <p>On part de la dernière case de la chaîne et on remonte jusqu'à la première. On ajoute chaque caractère à une nouvelle chaîne, qui sera la chaîne inversée.</p>
+      <h3>Le pseudo-code</h3>
+<pre><code>Algorithme Inverse
+Variables
+    ch, inv : chaîne
+    i : entier
+Début
+    Écrire("Donner une chaîne : ")
+    Lire(ch)
+    inv ← ""
+    Pour i de long(ch) - 1 à 0 (pas -1) faire
+        inv ← inv + ch[i]
+    FinPour
+    Écrire("La chaîne inversée est : ", inv)
+Fin</code></pre>
+      <h3>Exemple pas à pas</h3>
+      <p>Avec ch = « iset » (long(ch) = 4, donc i va de 3 à 0) :</p>
+      <div class="tableau">
+        <table>
+          <tr><th>i</th><th>ch[i]</th><th>inv</th></tr>
+          <tr><td>3</td><td>t</td><td>"t"</td></tr>
+          <tr><td>2</td><td>e</td><td>"te"</td></tr>
+          <tr><td>1</td><td>s</td><td>"tes"</td></tr>
+          <tr><td>0</td><td>i</td><td>"tesi"</td></tr>
+        </table>
+      </div>
+      <p>Résultat : la chaîne inversée est « tesi ».</p>
+      <h3>Traduction en Python</h3>
+<pre><code>ch = input("Donner une chaîne : ")
+inv = ""
+for i in range(len(ch) - 1, -1, -1):
+    inv = inv + ch[i]
+print("La chaîne inversée est :", inv)</code></pre>
+    </section>
+
+    <section>
+      <h2>Algorithme 3 : vérifier si un mot est un palindrome</h2>
+      <h3>L'idée générale</h3>
+      <p>Un palindrome se lit pareil dans les deux sens, comme « radar » ou « elle ». On compare la 1re lettre avec la dernière, la 2e avec l'avant-dernière, et ainsi de suite jusqu'au milieu. Si deux lettres sont différentes, ce n'est pas un palindrome.</p>
+      <h3>Le pseudo-code</h3>
+<pre><code>Algorithme Palindrome
+Variables
+    ch : chaîne
+    i, n : entier
+    pal : booléen
+Début
+    Écrire("Donner un mot : ")
+    Lire(ch)
+    n ← long(ch)
+    pal ← Vrai
+    Pour i de 0 à (n div 2) - 1 faire
+        Si ch[i] ≠ ch[n - 1 - i] alors
+            pal ← Faux
+        FinSi
+    FinPour
+    Si pal alors
+        Écrire(ch, " est un palindrome")
+    Sinon
+        Écrire(ch, " n'est pas un palindrome")
+    FinSi
+Fin</code></pre>
+      <h3>Exemple pas à pas</h3>
+      <p>Avec ch = « radar » (n = 5, n div 2 = 2, donc i va de 0 à 1) :</p>
+      <div class="tableau">
+        <table>
+          <tr><th>i</th><th>ch[i]</th><th>n - 1 - i</th><th>ch[n - 1 - i]</th><th>Égaux ?</th><th>pal</th></tr>
+          <tr><td>0</td><td>r</td><td>4</td><td>r</td><td>oui</td><td>Vrai</td></tr>
+          <tr><td>1</td><td>a</td><td>3</td><td>a</td><td>oui</td><td>Vrai</td></tr>
+        </table>
+      </div>
+      <p>Résultat : « radar » est un palindrome. La lettre du milieu (« d ») n'a pas besoin d'être comparée, car elle est face à elle-même.</p>
+      <h3>Traduction en Python</h3>
+<pre><code>ch = input("Donner un mot : ")
+n = len(ch)
+pal = True
+for i in range(n // 2):
+    if ch[i] != ch[n - 1 - i]:
+        pal = False
+if pal:
+    print(ch, "est un palindrome")
+else:
+    print(ch, "n'est pas un palindrome")</code></pre>
     </section>
 
     <section>
       <h2>Transparence IA</h2>
-      <p><strong>Outils utilisés :</strong> …</p>
-      <p><strong>Rôle de l'IA :</strong> …</p>
-      <p><strong>Ce que j'ai fait moi-même :</strong> …</p>
-      <p><strong>Sources vérifiées :</strong> …</p>
+      <p><strong>Outils utilisés :</strong> Claude.</p>
+      <p><strong>Rôle de l'IA :</strong> Claude a mis au propre mes algorithmes, a écrit la traduction en Python et les tableaux pas à pas, et a testé le code.</p>
+      <p><strong>Ce que j'ai fait moi-même :</strong> j'ai écrit les trois algorithmes à la main dans mon cahier, je les ai comparés avec la version de Claude et j'ai compris chaque étape des exemples.</p>
+      <p><strong>Sources vérifiées :</strong> mon cours d'algorithmique (ISET Nabeul).</p>
     </section>
   </main>
 
