@@ -55,3 +55,10 @@ button { background: var(--accent); color: white; border: none; padding: 0.6rem 
 table { border-collapse: collapse; width: 100%; }
 th, td { border: 1px solid #d0d7e2; padding: 0.5rem; text-align: left; vertical-align: top; }
 th { background: #e8eef6; }
+
+.schema { display: flex; flex-direction: column; align-items: center; gap: 0.3rem; text-align: center; }
+.couche { width: 100%; max-width: 650px; padding: 0.8rem; border-radius: 8px; background: #e8eef6; }
+.couche.os { background: var(--accent); color: white; }
+.roles { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.5rem; margin-top: 0.6rem; }
+.roles div { background: white; color: var(--texte); padding: 0.5rem; border-radius: 6px; font-size: 0.9rem; }
+.fleche { font-size: 1.3rem; }
