@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>prompt engineering– Portfolio d'Alae Bousetta</title>
+  <title>Prompt engineering – Portfolio d'Alae Bousetta</title>
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -23,19 +23,87 @@
   </header>
 
   <main>
-    <h1>prompt engineering</h1>
+    <h1>Prompt engineering</h1>
+    <p>Un prompt est la demande qu'on écrit à une IA. Plus il est précis, meilleure est la réponse. Voici ce que j'ai appris en testant mes propres prompts.</p>
 
     <section>
-      <h2>Contenu à venir</h2>
-      <p>Cette page présentera mes réalisations.</p>
+      <h2>Les éléments d'un bon prompt</h2>
+      <ul>
+        <li><strong>Rôle :</strong> dire à l'IA qui elle est (« Tu es un professeur… »).</li>
+        <li><strong>Contexte :</strong> dire qui je suis et pourquoi je demande (« Je suis étudiante en 1re année… »).</li>
+        <li><strong>Tâche :</strong> dire clairement ce que je veux (expliquer, corriger, résumer…).</li>
+        <li><strong>Format de sortie :</strong> liste, tableau, nombre de lignes…</li>
+        <li><strong>Contraintes :</strong> nombre de mots, niveau de langue, sources officielles…</li>
+        <li><strong>Exemples :</strong> montrer à l'IA le type de réponse attendu.</li>
+      </ul>
+      <p><strong>Techniques utiles :</strong> demander un raisonnement étape par étape, donner des exemples, améliorer le prompt plusieurs fois, et demander à l'IA de vérifier sa réponse ou de citer ses sources.</p>
+    </section>
+
+    <section>
+      <h2>Cas 1 : faire un CV</h2>
+      <h3>Prompt initial (faible) – Claude</h3>
+      <p>« Je suis étudiante en 1re année de licence en informatique. Je veux faire un CV très professionnel, aide-moi. »</p>
+      <h3>Résultat obtenu</h3>
+      <p>Claude a créé un CV avec les informations d'une autre personne, parce que je n'avais pas donné mes informations.</p>
+      <h3>Prompt amélioré</h3>
+      <p>J'ai écrit un deuxième message avec mon nom, ma formation, mon bac, mes compétences, mes certificats, mes activités et mes langues. Je ne les recopie pas ici pour protéger mes données personnelles.</p>
+      <h3>Résultat obtenu</h3>
+      <p>Un CV correct à mon nom, avec les bonnes parties : profil, formation, projets, certificats, compétences et langues. Je ne publie pas mon CV sur ce site, pour la même raison.</p>
+      <h3>Analyse</h3>
+      <p>Sans contexte, l'IA a deviné et s'est trompée. Quand j'ai donné mes vraies informations, le résultat était juste. Leçon : il faut toujours donner le contexte et ne jamais laisser l'IA deviner. Mais il faut aussi faire attention aux informations personnelles qu'on partage et qu'on publie.</p>
+    </section>
+
+    <section>
+      <h2>Cas 2 : comprendre les pointeurs en C (comparaison ChatGPT / Claude)</h2>
+      <h3>Prompt initial (faible) – ChatGPT</h3>
+      <p>« explique les pointeurs »</p>
+      <h3>Résultat obtenu</h3>
+      <p>La réponse n'était pas détaillée et n'était pas adaptée à mon niveau.</p>
+      <img src="../medias/pe-pointeurs-faible.png" alt="Réponse de ChatGPT au prompt faible sur les pointeurs">
+      <h3>Prompt amélioré – testé dans ChatGPT puis dans Claude</h3>
+      <p>« Tu es un professeur patient. Explique les pointeurs en langage C à une étudiante de 1re année qui débute. Utilise une comparaison avec la vie quotidienne, un exemple de code de 5 lignes maximum, et 150 mots maximum. »</p>
+      <h3>Résultat obtenu</h3>
+      <p>Les deux réponses étaient beaucoup plus faciles à comprendre. J'ai préféré celle de Claude, parce qu'il explique mieux.</p>
+      <img src="../medias/pe-pointeurs-chatgpt.png" alt="Réponse de ChatGPT au prompt amélioré sur les pointeurs">
+      <img src="../medias/pe-pointeurs-claude.png" alt="Réponse de Claude au prompt amélioré sur les pointeurs">
+      <h3>Analyse</h3>
+      <p>J'ai ajouté un rôle (professeur patient), un contexte (étudiante de 1re année) et des contraintes (comparaison, 5 lignes de code, 150 mots). L'IA a adapté sa réponse à mon niveau. Le même prompt ne donne pas la même réponse selon l'outil : c'est utile de comparer.</p>
+    </section>
+
+    <section>
+      <h2>Cas 3 : reconnaître le phishing avec des sources</h2>
+      <h3>Prompt initial (faible) – ChatGPT</h3>
+      <p>« c quoi le phishing »</p>
+      <h3>Résultat obtenu</h3>
+      <p>Une explication générale avec des émojis, mais sans aucune source.</p>
+      <img src="../medias/pe-phishing-faible.png" alt="Réponse au prompt faible sur le phishing, sans sources">
+      <h3>Prompt amélioré (écrit par moi) – Perplexity</h3>
+      <p>« Je suis une étudiante de 1re année de licence en Technologies de l'informatique à l'ISET Nabeul. Agis comme un prof et donne-moi 3 signes pour reconnaître un e-mail d'hameçonnage en utilisant uniquement des sources officielles (sites gouvernementaux ou agences de cybersécurité). Cite chaque source avec son lien et réponds sous forme de liste. »</p>
+      <h3>Résultat obtenu</h3>
+      <p>Trois signes clairs : une adresse ou des liens suspects, une salutation générale ou des fautes, et un message urgent qui demande des données personnelles. Chaque signe a une source officielle (Cybermalveillance.gouv.fr, Centre canadien pour la cybersécurité).</p>
+      <img src="../medias/pe-phishing-ameliore.png" alt="Réponse au prompt amélioré sur le phishing, avec des sources officielles">
+      <h3>Analyse</h3>
+      <p>J'ai ajouté moi-même mon contexte et un rôle, et j'ai demandé des sources officielles et une liste. La réponse est plus précise et surtout vérifiable, grâce aux liens.</p>
+    </section>
+
+    <section>
+      <h2>Ma bibliothèque de prompts</h2>
+      <p>Cinq prompts que je peux réutiliser pour mes études :</p>
+      <ol>
+        <li><strong>Expliquer une notion :</strong> [ton prompt 1]</li>
+        <li><strong>Comprendre une erreur dans mon code :</strong> [ton prompt 2]</li>
+        <li><strong>Réviser un examen :</strong> [ton prompt 3]</li>
+        <li><strong>Corriger un texte en français :</strong> [ton prompt 4]</li>
+        <li><strong>Chercher une information avec des sources :</strong> [ton prompt 5]</li>
+      </ol>
     </section>
 
     <section>
       <h2>Transparence IA</h2>
-      <p><strong>Outils utilisés :</strong> …</p>
-      <p><strong>Rôle de l'IA :</strong> …</p>
-      <p><strong>Ce que j'ai fait moi-même :</strong> …</p>
-      <p><strong>Sources vérifiées :</strong> …</p>
+      <p><strong>Outils utilisés :</strong> ChatGPT, Claude, Perplexity.</p>
+      <p><strong>Rôle de l'IA :</strong> les IA ont répondu aux prompts que j'ai testés. Claude m'a aussi aidée à organiser la page et à corriger mon français.</p>
+      <p><strong>Ce que j'ai fait moi-même :</strong> j'ai testé tous les prompts, j'ai amélioré moi-même le prompt sur le phishing, j'ai comparé les réponses, j'ai choisi l'outil que je préfère, j'ai écrit ma bibliothèque de prompts et j'ai fait les captures d'écran.</p>
+      <p><strong>Sources vérifiées :</strong> les liens donnés dans la réponse du cas 3.</p>
     </section>
   </main>
 
