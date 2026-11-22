@@ -1,8 +1,16 @@
-/* Les couleurs du site */
+/* Les couleurs du site : change-les ici seulement */
 :root {
-  --fond: #f5f7fb;
-  --texte: #1e2a44;
-  --accent: #2a6f97;
+  --fond: #fff0f6;      /* rose très clair : l'arrière-plan */
+  --texte: #3d1530;     /* le texte (prune foncé) */
+  --accent: #db2777;    /* le rose vif des boutons et bordures */
+  --degrade1: #db2777;  /* début du dégradé (rose) */
+  --degrade2: #9333ea;  /* fin du dégradé (violet) */
+  --titre1: #be185d;    /* couleur des grands titres h1 */
+  --titre2: #7e22ce;    /* couleur des titres h2 */
+  --teinte1: #fce7f3;   /* cartes Digital Skills (rose pâle) */
+  --teinte2: #ede9fe;   /* cartes Développement (lavande) */
+  --teinte3: #ffedd5;   /* cartes Systèmes (pêche) */
+  --code: #4a1036;      /* fond des blocs de code */
 }
 
 /* Le corps de la page */
@@ -14,8 +22,8 @@ body {
   line-height: 1.6;
 }
 
-/* L'en-tête bleu et le menu */
-header { background: var(--accent); padding: 1rem; }
+/* L'en-tête en dégradé et le menu */
+header { background: linear-gradient(90deg, var(--degrade1), var(--degrade2)); padding: 1rem; }
 .logo { color: white; font-weight: bold; margin: 0 0 0.5rem; }
 nav { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; }
 nav a { color: white; text-decoration: none; }
@@ -23,14 +31,13 @@ nav a:hover { text-decoration: underline; }
 
 /* Le contenu */
 main { max-width: 900px; margin: 0 auto; padding: 1rem; }
-section { background: white; border-radius: 8px; padding: 1rem; margin-bottom: 1rem; }
+section { background: white; border-radius: 12px; padding: 1rem; margin-bottom: 1rem; box-shadow: 0 2px 12px rgba(219, 39, 119, 0.08); }
 img, iframe, video { max-width: 100%; }
-pre { background: #1e2a44; color: #f5f7fb; padding: 1rem; overflow-x: auto; border-radius: 8px; }
+pre { background: var(--code); color: #fdf2f8; padding: 1rem; overflow-x: auto; border-radius: 8px; }
 
-/* Les cartes de la page d'accueil */
-.cartes { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
-.carte { display: block; background: white; padding: 1rem; border-radius: 8px; color: var(--texte); text-decoration: none; border: 2px solid transparent; }
-.carte:hover { border-color: var(--accent); }
+/* Les titres en couleur */
+h1 { color: var(--titre1); }
+h2 { color: var(--titre2); }
 
 /* Le bas de page */
 footer { text-align: center; padding: 1rem; font-size: 0.9rem; }
@@ -38,18 +45,18 @@ footer { text-align: center; padding: 1rem; font-size: 0.9rem; }
 /* La checklist de la page cybersécurité */
 .checklist { list-style: none; padding: 0; }
 .checklist li { margin-bottom: 0.5rem; }
-button { background: var(--accent); color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 6px; font-size: 1rem; cursor: pointer; }
+button { background: linear-gradient(90deg, var(--degrade1), var(--degrade2)); color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 6px; font-size: 1rem; cursor: pointer; }
 #resultat { font-weight: bold; margin-top: 1rem; }
 
 /* Les tableaux */
 .tableau { overflow-x: auto; }
 table { border-collapse: collapse; width: 100%; }
-th, td { border: 1px solid #d0d7e2; padding: 0.5rem; text-align: left; vertical-align: top; }
-th { background: #e8eef6; }
+th, td { border: 1px solid #f3c6da; padding: 0.5rem; text-align: left; vertical-align: top; }
+th { background: var(--teinte1); }
 
 /* Le schéma du système d'exploitation */
 .schema { display: flex; flex-direction: column; align-items: center; gap: 0.3rem; text-align: center; }
-.couche { width: 100%; max-width: 650px; padding: 0.8rem; border-radius: 8px; background: #e8eef6; }
+.couche { width: 100%; max-width: 650px; padding: 0.8rem; border-radius: 8px; background: var(--teinte2); }
 .couche.os { background: var(--accent); color: white; }
 .roles { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.5rem; margin-top: 0.6rem; }
 .roles div { background: white; color: var(--texte); padding: 0.5rem; border-radius: 6px; font-size: 0.9rem; }
@@ -57,10 +64,31 @@ th { background: #e8eef6; }
 
 /* Le schéma de l'architecture d'un ordinateur */
 .archi { display: flex; flex-direction: column; align-items: center; gap: 0.4rem; text-align: center; }
-.bloc { background: #e8eef6; border-radius: 8px; padding: 0.8rem; }
+.bloc { background: var(--teinte2); border-radius: 8px; padding: 0.8rem; }
 .bloc.cpu { background: var(--accent); color: white; max-width: 420px; width: 100%; }
 .bus { width: 100%; background: var(--texte); color: white; padding: 0.5rem; border-radius: 6px; font-weight: bold; }
 .ligne-blocs { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.5rem; width: 100%; }
 
-/* L'avatar de la page d'accueil (mes initiales) */
-.avatar { width: 96px; height: 96px; border-radius: 50%; background: var(--accent); color: white; display: flex; align-items: center; justify-content: center; font-size: 2rem; font-weight: bold; }
+/* La page d'accueil « Qui je suis » */
+.presentation { text-align: center; padding: 2rem 1.2rem; }
+.avatar { width: 140px; height: 140px; border-radius: 50%; background: var(--teinte1); border: 4px solid var(--accent); display: flex; align-items: center; justify-content: center; font-size: 4.5rem; margin: 0 auto 1rem; }
+img.avatar { object-fit: cover; }
+.sous-titre { font-size: 1.15rem; font-weight: bold; color: var(--titre2); }
+.atouts { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+.atout { background: white; border-radius: 12px; padding: 1rem; text-align: center; box-shadow: 0 2px 12px rgba(219, 39, 119, 0.08); }
+.atout strong { display: block; color: var(--titre1); font-size: 1.1rem; }
+.atout span { font-size: 0.9rem; }
+.centre { text-align: center; }
+
+/* Le grand bouton vers les modules */
+.bouton-modules { display: inline-block; margin: 1rem 0; padding: 0.9rem 1.8rem; border-radius: 999px; background: linear-gradient(90deg, var(--degrade1), var(--degrade2)); color: white; font-weight: bold; font-size: 1.1rem; text-decoration: none; }
+.bouton-modules:hover { box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2); }
+
+/* Les cartes de la page des modules : une couleur par partie du programme */
+.cartes { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+.carte { display: block; padding: 1rem; border-radius: 12px; color: var(--texte); text-decoration: none; border: 2px solid transparent; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); }
+.carte:hover { border-color: var(--accent); }
+.carte h3 { color: var(--titre1); margin-top: 0; }
+.carte.ds { background: var(--teinte1); }
+.carte.dev { background: var(--teinte2); }
+.carte.sys { background: var(--teinte3); }
