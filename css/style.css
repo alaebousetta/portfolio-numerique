@@ -1,11 +1,11 @@
-
+/* Les couleurs du site */
 :root {
   --fond: #f5f7fb;
   --texte: #1e2a44;
   --accent: #2a6f97;
 }
 
-
+/* Le corps de la page */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -14,51 +14,50 @@ body {
   line-height: 1.6;
 }
 
-
+/* L'en-tête bleu et le menu */
 header { background: var(--accent); padding: 1rem; }
-.logo { color: white; font-weight: bold; margin: 0 0 0.5rem;
-       
+.logo { color: white; font-weight: bold; margin: 0 0 0.5rem; }
 nav { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; }
 nav a { color: white; text-decoration: none; }
 nav a:hover { text-decoration: underline; }
 
-
+/* Le contenu */
 main { max-width: 900px; margin: 0 auto; padding: 1rem; }
-
 section { background: white; border-radius: 8px; padding: 1rem; margin-bottom: 1rem; }
-
-
 img, iframe, video { max-width: 100%; }
-
-
 pre { background: #1e2a44; color: #f5f7fb; padding: 1rem; overflow-x: auto; border-radius: 8px; }
 
-
+/* Les cartes de la page d'accueil */
 .cartes { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
 .carte { display: block; background: white; padding: 1rem; border-radius: 8px; color: var(--texte); text-decoration: none; border: 2px solid transparent; }
 .carte:hover { border-color: var(--accent); }
 
-
+/* Le bas de page */
 footer { text-align: center; padding: 1rem; font-size: 0.9rem; }
 
-
+/* La checklist de la page cybersécurité */
 .checklist { list-style: none; padding: 0; }
 .checklist li { margin-bottom: 0.5rem; }
-
-
 button { background: var(--accent); color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 6px; font-size: 1rem; cursor: pointer; }
-
-
 #resultat { font-weight: bold; margin-top: 1rem; }
-       
+
+/* Les tableaux */
 .tableau { overflow-x: auto; }
 table { border-collapse: collapse; width: 100%; }
 th, td { border: 1px solid #d0d7e2; padding: 0.5rem; text-align: left; vertical-align: top; }
 th { background: #e8eef6; }
 
+/* Le schéma du système d'exploitation */
 .schema { display: flex; flex-direction: column; align-items: center; gap: 0.3rem; text-align: center; }
 .couche { width: 100%; max-width: 650px; padding: 0.8rem; border-radius: 8px; background: #e8eef6; }
 .couche.os { background: var(--accent); color: white; }
 .roles { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.5rem; margin-top: 0.6rem; }
 .roles div { background: white; color: var(--texte); padding: 0.5rem; border-radius: 6px; font-size: 0.9rem; }
 .fleche { font-size: 1.3rem; }
+
+/* Le schéma de l'architecture d'un ordinateur */
+.archi { display: flex; flex-direction: column; align-items: center; gap: 0.4rem; text-align: center; }
+.bloc { background: #e8eef6; border-radius: 8px; padding: 0.8rem; }
+.bloc.cpu { background: var(--accent); color: white; max-width: 420px; width: 100%; }
+.bus { width: 100%; background: var(--texte); color: white; padding: 0.5rem; border-radius: 6px; font-weight: bold; }
+.ligne-blocs { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.5rem; width: 100%; }
