@@ -61,3 +61,6 @@ th { background: #e8eef6; }
 .bloc.cpu { background: var(--accent); color: white; max-width: 420px; width: 100%; }
 .bus { width: 100%; background: var(--texte); color: white; padding: 0.5rem; border-radius: 6px; font-weight: bold; }
 .ligne-blocs { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.5rem; width: 100%; }
+
+/* L'avatar de la page d'accueil (mes initiales) */
+.avatar { width: 96px; height: 96px; border-radius: 50%; background: var(--accent); color: white; display: flex; align-items: center; justify-content: center; font-size: 2rem; font-weight: bold; }
