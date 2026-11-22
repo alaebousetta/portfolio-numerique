@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>langade c– Portfolio d'Alae Bousetta</title>
+  <title>Langage C – Portfolio d'Alae Bousetta</title>
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -23,19 +23,189 @@
   </header>
 
   <main>
-    <h1>langage-c</h1>
+    <h1>Langage C</h1>
+    <p>Trois programmes en C sur les chaînes de caractères, et une comparaison entre Python et C.</p>
 
     <section>
-      <h2>Contenu à venir</h2>
-      <p>Cette page présentera mes réalisations.</p>
+      <h2>Programme 1 : supprimer la première occurrence d'un mot</h2>
+      <p><strong>Notions utilisées :</strong> chaînes de caractères, pointeurs, fonctions <code>strstr</code> et <code>strlen</code>, boucle <code>for</code>.</p>
+      <h3>Le problème</h3>
+      <p>L'utilisateur tape une phrase (SUJ) et un mot (OBJ). Le programme supprime la première fois où le mot apparaît dans la phrase.</p>
+      <h3>Le code</h3>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+void removeFirstOccurrence(char SUJ[], char OBJ[]) {
+    int i, pos, L;
+    char *p = strstr(SUJ, OBJ);      // cherche OBJ dans SUJ
+    if (p != NULL) {
+        pos = p - SUJ;               // position où OBJ commence
+        L = strlen(OBJ);             // nombre de cases à supprimer
+        for (i = pos; SUJ[i + L] != '\0'; i++)
+            SUJ[i] = SUJ[i + L];     // on ramène la suite vers la gauche
+        SUJ[i] = '\0';
+    }
+}
+
+int main() {
+    char SUJ[100], OBJ[100];
+
+    printf("Donner la chaine SUJ : ");
+    fgets(SUJ, 100, stdin);
+    SUJ[strcspn(SUJ, "\n")] = '\0';   // enleve le \n de Entree
+
+    printf("Donner la chaine OBJ : ");
+    fgets(OBJ, 100, stdin);
+    OBJ[strcspn(OBJ, "\n")] = '\0';
+
+    if (strstr(SUJ, OBJ) == NULL)
+        printf("OBJ n'existe pas dans SUJ\n");
+    else {
+        removeFirstOccurrence(SUJ, OBJ);
+        printf("SUJ apres suppression : %s\n", SUJ);
+    }
+
+    return 0;
+}</code></pre>
+      <h3>Comment ça marche</h3>
+      <p><code>strstr</code> renvoie un pointeur vers l'endroit où le mot commence dans la phrase. <code>p - SUJ</code> donne sa position. Ensuite, je décale tous les caractères suivants vers la gauche, de la longueur du mot, et je remets <code>'\0'</code> à la fin.</p>
+      <h3>Résultat</h3>
+      <img src="../medias/c1.png" alt="Exécution du programme 1 : suppression d'un mot dans une phrase">
+      <h3>Difficultés rencontrées et solutions</h3>
+      <ul>
+        <li>J'avais oublié <code>#include &lt;stdio.h&gt;</code> et <code>#include &lt;string.h&gt;</code>. Sans eux, le compilateur ne connaît pas <code>printf</code> et <code>strstr</code>.</li>
+        <li>Mes accolades étaient mal placées à la fin de la fonction. Je les ai remises dans le bon ordre.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Programme 2 : inverser majuscules et minuscules</h2>
+      <p><strong>Notions utilisées :</strong> boucle <code>while</code>, conditions, table ASCII.</p>
+      <h3>Le problème</h3>
+      <p>Transformer chaque majuscule en minuscule et chaque minuscule en majuscule. Par exemple, « Bonjour ISET » devient « bONJOUR iset ».</p>
+      <h3>Le code</h3>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+void convertCase(char ch[]) {
+    int i = 0;
+    while (ch[i] != '\0') {
+        if ('A' &lt;= ch[i] &amp;&amp; ch[i] &lt;= 'Z')
+            ch[i] = ch[i] + 32;      // majuscule -&gt; minuscule
+        else if ('a' &lt;= ch[i] &amp;&amp; ch[i] &lt;= 'z')
+            ch[i] = ch[i] - 32;      // minuscule -&gt; majuscule
+        i++;
+    }
+}
+
+int main() {
+    char ch[100];
+    printf("Donner une chaine : ");
+    fgets(ch, 100, stdin);
+    ch[strcspn(ch, "\n")] = '\0';    // enleve le \n de Entree
+
+    convertCase(ch);
+    printf("Resultat : %s\n", ch);
+
+    return 0;
+}</code></pre>
+      <h3>Comment ça marche</h3>
+      <p>Dans la table ASCII, une minuscule est toujours 32 cases après sa majuscule : 'A' vaut 65 et 'a' vaut 97. Pour passer de l'une à l'autre, j'ajoute ou j'enlève 32.</p>
+      <h3>Résultat</h3>
+      <img src="../medias/c2.png" alt="Exécution du programme 2 : inversion des majuscules et des minuscules">
+      <h3>Difficultés rencontrées et solutions</h3>
+      <ul>
+        <li>Avec <code>scanf("%s")</code>, le programme s'arrêtait au premier espace. J'ai utilisé <code>fgets</code> pour lire toute la phrase.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Programme 3 : compter les « e » et les espaces avec des pointeurs</h2>
+      <p><strong>Notions utilisées :</strong> fonctions, pointeurs (passage par adresse), boucle <code>for</code>.</p>
+      <h3>Le problème</h3>
+      <p>Compter combien de fois la lettre « e » apparaît dans une phrase, et combien il y a d'espaces.</p>
+      <h3>Le code</h3>
+<pre><code>#include &lt;stdio.h&gt;
+
+void nombre(char ch[], int *nbE, int *nbEspaces) {
+    int i;
+    *nbE = 0;
+    *nbEspaces = 0;
+    for (i = 0; ch[i] != '\0'; i++) {
+        if (ch[i] == 'e')
+            *nbE = *nbE + 1;
+        if (ch[i] == ' ')
+            *nbEspaces = *nbEspaces + 1;
+    }
+}
+
+int main() {
+    int nbE, nbEspaces;
+    char ch[100];
+    printf("Donner une chaine : ");
+    fgets(ch, 100, stdin);
+
+    nombre(ch, &amp;nbE, &amp;nbEspaces);
+    printf("Nombre de lettres e : %d\n", nbE);
+    printf("Nombre d'espaces : %d\n", nbEspaces);
+
+    return 0;
+}</code></pre>
+      <h3>Comment ça marche</h3>
+      <p>Une fonction ne peut renvoyer qu'une seule valeur avec <code>return</code>. Ici, je dois en renvoyer deux, alors je passe les adresses des variables (<code>&amp;nbE</code>). Grâce aux pointeurs, la fonction modifie directement les variables du <code>main</code>.</p>
+      <h3>Résultat</h3>
+      <img src="../medias/c3.png" alt="Exécution du programme 3 : nombre de lettres e et nombre d'espaces">
+      <h3>Difficultés rencontrées et solutions</h3>
+      <ul>
+        <li>Mes deux affichages disaient « Resultat », donc on ne savait pas quel nombre était quoi. Je les ai renommés.</li>
+        <li>J'ai donné des noms plus clairs aux variables : <code>nbE</code> et <code>nbEspaces</code> au lieu de <code>s</code> et <code>j</code>.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Comparaison Python / C</h2>
+      <div class="tableau">
+        <table>
+          <tr>
+            <th>Critère</th>
+            <th>C</th>
+            <th>Python</th>
+          </tr>
+          <tr>
+            <td>Syntaxe</td>
+            <td>Je mets des <code>;</code> à la fin des lignes et des <code>{ }</code> pour les blocs.</td>
+            <td>Je mets <code>:</code> et j'utilise l'indentation. Python est plus court à écrire.</td>
+          </tr>
+          <tr>
+            <td>Typage</td>
+            <td>Je dois déclarer la variable avec son type (<code>int i</code>).</td>
+            <td>Je ne donne pas le type : Python le devine à partir de la valeur (<code>i = 0</code>).</td>
+          </tr>
+          <tr>
+            <td>Mémoire</td>
+            <td>C'est le programmeur qui gère la mémoire : il choisit la taille du tableau (<code>char ch[100]</code>).</td>
+            <td>La mémoire est gérée automatiquement : une liste s'agrandit toute seule avec <code>append</code>.</td>
+          </tr>
+          <tr>
+            <td>Rapidité</td>
+            <td>Plus rapide, car il est compilé : traduit en langage machine avant l'exécution.</td>
+            <td>Plus lent, car il est interprété : lu ligne par ligne pendant l'exécution.</td>
+          </tr>
+          <tr>
+            <td>Usages</td>
+            <td>Systèmes d'exploitation, électronique et microcontrôleurs (Arduino).</td>
+            <td>Intelligence artificielle, analyse de données, scripts pour automatiser des tâches.</td>
+          </tr>
+        </table>
+      </div>
     </section>
 
     <section>
       <h2>Transparence IA</h2>
-      <p><strong>Outils utilisés :</strong> …</p>
-      <p><strong>Rôle de l'IA :</strong> …</p>
-      <p><strong>Ce que j'ai fait moi-même :</strong> …</p>
-      <p><strong>Sources vérifiées :</strong> …</p>
+      <p><strong>Outils utilisés :</strong> Programiz (pour exécuter le code), Claude.</p>
+      <p><strong>Rôle de l'IA :</strong> Claude a testé mes programmes, m'a expliqué mes erreurs, m'a posé des questions pour m'aider à remplir le tableau et a corrigé mon français.</p>
+      <p><strong>Ce que j'ai fait moi-même :</strong> j'ai écrit les trois programmes, compris et appliqué les corrections, répondu aux questions du tableau avec mes mots, exécuté les programmes et fait les captures d'écran.</p>
+      <p><strong>Sources vérifiées :</strong> mon cours de langage C (ISET Nabeul).</p>
     </section>
   </main>
 
